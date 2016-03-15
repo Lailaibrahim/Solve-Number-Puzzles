@@ -11,8 +11,8 @@ Semester 2, 2015
 Project Specification
 Project due 21 October 2015 at 5pm
 Worth 15%
-The objective of this project is to practice and assess your understanding of logic programming
-and Prolog. You will write code to solve number puzzles.
+The objective of this project is to practice and assess your understanding of logic programming and Prolog.
+You will write code to solve number puzzles.
 Number Puzzles
 A number puzzle is a square grid of squares, each to be filled in with a single digit 1–9 (zero
 is not permitted) satisfying these constraints:
