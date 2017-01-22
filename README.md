@@ -43,9 +43,6 @@ Here is an example puzzle as posed (left) and solved (right) :
 The Program
 
 You will write Prolog code to solve numbers puzzles. Your program should supply a predicate puzzle solution(Puzzle) that holds when Puzzle is the representation of a solved number puzzle.
-
-1
-
 A numbers puzzle will be represented as a list of lists, each of the same length, representing a single row of the puzzle. The first element of each list is considered to be the header for that row. Each element but the first of the first list in the puzzle is considered to be the header of the corresponding column of the puzzle. The first element of the first element of the list is the corner square of the puzzle, and thus is ignored.
 
 You can assume that when your puzzle solution/1 predicate is called, its argument will be a proper list of proper lists, and all the header squares of the puzzle (plus the ignored corner square) are bound to integers. Some of the other squares in the puzzle may also be bound to integers, but the others will be unbound. When puzzle solution/1 succeeds, its argument must be ground. Of course, if the puzzle is not solvable, the predicate should fail, and it should never succeed with a puzzle argument that is not a valid solution. For example, your program would solve the above puzzle as below:
@@ -83,48 +80,35 @@ Your project will be assessed on the following criteria:
 30% The ability of your program to correctly solve 3×3 number puzzles; and
 20% The ability of your program to correctly solve 4×4 number puzzles.
 
-3
 Note that timeouts will be imposed on all tests. You will have at least 20 seconds to solve each puzzle, regardless of difficulty. Executions taking longer than that will be unceremoniously terminated, leading to that test being assessed as failing. Twenty seconds should be ample with careful implementation.
 See the Project Coding Guidelines on the LMS for detailed suggestions for coding style. These guidelines will form the basis of the quality assessment of your code and documentation. Be sure to document the predicates you take from the starter file you are given, too.
 
 Submission
 
 The project submission deadline is 21 October 2015 at 5pm. You must submit your project from one of the Linux servers dimefox.eng.unimelb.edu.au or nutmeg.eng.unimelb.edu.au.
-Note that this host is not directly accessible from outside the university campus, so if you wish to submit from home, you must use the university’s VPN; see the LMS Resources page for guidance. Make sure the version of your program source files you wish to submit is on the
-server, cd to the directory holding your source code and issue the command:
+Note that this host is not directly accessible from outside the university campus, so if you wish to submit from home, you must use the university’s VPN; see the LMS Resources page for guidance. Make sure the version of your program source files you wish to submit is on the server, cd to the directory holding your source code and issue the command:
 submit COMP90048 proj2 numbers.pl
 If your code spans multiple source files, add the extra ones to the end of that command line.
 Important: you must wait a minute (more if the servers are busy) and do:
 verify COMP90048 proj2 | less
 This will show you the test results from your submission, as well as the file(s) you submitted.
-If the test results show any problems, correct them and submit again. You may submit as
-often as you like; only your final submission will be assessed.
-If your program compiles and runs properly, you should see the line “Running tests”,
-followed by several test runs. If you do not see this, then your program did not work correctly.
-The version of SWI Prolog installed on the servers is older than you probably have on your
-own computer or the lab computers, so you should be sure to test your code on the servers.
+If the test results show any problems, correct them and submit again. You may submit as often as you like; only your final submission will be assessed.
+If your program compiles and runs properly, you should see the line “Running tests”, followed by several test runs. If you do not see this, then your program did not work correctly.
+The version of SWI Prolog installed on the servers is older than you probably have on your own computer or the lab computers, so you should be sure to test your code on the servers.
 Do not just assume it will run correctly.
-If you wish to (re-)submit after the project deadline, you may do so by adding “.late”
-to the end of the project name (i.e., proj2.late) in the submit and verify commands. But
-note that a penalty, described below, will apply to late submissions, so you should weigh the
-points you will lose for a late submission against the points you expect to gain by revising
-your program and submitting again.
+If you wish to (re-)submit after the project deadline, you may do so by adding “.late” to the end of the project name (i.e., proj2.late) in the submit and verify commands. But note that a penalty, described below, will apply to late submissions, so you should weigh the points you will lose for a late submission against the points you expect to gain by revising your program and submitting again.
 It is your responsibility to verify your submission.
-Windows users should see the LMS Resources list for instructions for downloading the
-(free) Putty and Winscp programs to allow you to use and copy files to the department
-servers from windows computers. Mac OS X and Linux users can use the ssh, scp, and sftp
-programs that come with your operating system.
+Windows users should see the LMS Resources list for instructions for downloading the (free) Putty and Winscp programs to allow you to use and copy files to the department servers from windows computers. Mac OS X and Linux users can use the ssh, scp, and sftp programs that come with your operating system.
+
 Late Penalties
 Late submissions will incur a penalty of 0.5% per hour late, including evening and weekend
 hours. This means that a perfect project that is much more than 4 days late will receive
 less than half the marks for the project. If you have a medical or similar compelling reason
-4
-for being late, you should contact the lecturer as early as possible to ask for an extension
-(preferably before the due date).
+for being late, you should contact the lecturer as early as possible to ask for an extension (preferably before the due date).
+
 Note Well:
 This project is part of your final assessment, so cheating is not acceptable. Any
 form of material exchange between teams, whether written, electronic or any
 other medium, is considered cheating, and so is the soliciting of help from electronic newsgroups. Providing undue assistance is considered as serious as receiving it, and in the case of similarities that indicate exchange of more than basic
 ideas, formal disciplinary action will be taken for all involved parties. If you have
 questions regarding these rules, please ask the lecturer.
-5
