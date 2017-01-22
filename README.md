@@ -20,9 +20,7 @@ A number puzzle is a square grid of squares, each to be filled in with a single 
 is not permitted) satisfying these constraints:
 
 • each row and each column contains no repeated digits;
-
 • all squares on the diagonal line from upper left to lower right contain the same value;
-
 and
 • the heading of reach row and column (leftmost square in a row and topmost square in
 a column) holds either the sum or the product of all the digits in that row or column
@@ -32,6 +30,7 @@ puzzle is not meaningful.
 When the puzzle is originally posed, most or all of the squares will be empty, with the
 headings filled in. A puzzle will only have one solution. The goal of the puzzle is to fill in all
 the squares according to the rules.
+
 Here is an example puzzle as posed (left) and solved (right) :
 14 10 35
 14
@@ -41,16 +40,20 @@ Here is an example puzzle as posed (left) and solved (right) :
 14 7 2 1
 15 3 7 5
 28 4 1 7
+
+
 The Program
 You will write Prolog code to solve numbers puzzles. Your program should supply a predicate
 puzzle solution(Puzzle) that holds when Puzzle is the representation of a solved number
 puzzle.
+
 1
 A numbers puzzle will be represented as a list of lists, each of the same length, representing
 a single row of the puzzle. The first element of each list is considered to be the header for that
 row. Each element but the first of the first list in the puzzle is considered to be the header
 of the corresponding column of the puzzle. The first element of the first element of the list is
 the corner square of the puzzle, and thus is ignored.
+
 You can assume that when your puzzle solution/1 predicate is called, its argument will
 be a proper list of proper lists, and all the header squares of the puzzle (plus the ignored
 corner square) are bound to integers. Some of the other squares in the puzzle may also be
@@ -58,36 +61,32 @@ bound to integers, but the others will be unbound. When puzzle solution/1 succee
 argument must be ground. Of course, if the puzzle is not solvable, the predicate should fail,
 and it should never succeed with a puzzle argument that is not a valid solution. For example,
 your program would solve the above puzzle as below:
+
 ?- Puzzle=[[0,14,10,35],[14,_,_,_],[15,_,_,_],[28,_,1,_]],
 | puzzle_solution(Puzzle).
 Puzzle = [[0, 14, 10, 35], [14, 7, 2, 1], [15, 3, 7, 5], [28, 4, 1, 7]] ;
+
 false.
+
 Your puzzle solution/1 predicate should be written in the file numbers.pl, but you may
 submit other prolog files if you like. If you do use multiple files, make sure numbers.pl loads
 the other files. You may also use Prolog library modules supported by SWI Prolog version
 6.6.6.
+
 Hints
 1. Begin by unifying all the squares on the diagonal. This only needs to be done once to
 ensure that the puzzle satisfies the first constraint.
-2. It is fairly simple to check if a row of the puzzle (one of the inner lists) is a valid
-solution. Simply check that the first list element is equal to the sum or product of the
-other elements. Checking the columns is a bit more complicated. However, the library
-provides a transpose/2 predicate. If you transpose the puzzle, the columns become
-rows, so you can check the columns by checking the rows of the transposed puzzle. Load
-the library module containing the transpose/2 predicate with the directive
+
+2. It is fairly simple to check if a row of the puzzle (one of the inner lists) is a valid solution. Simply check that the first list element is equal to the sum or product of the other elements. Checking the columns is a bit more complicated. However, the library provides a transpose/2 predicate. If you transpose the puzzle, the columns become rows, so you can check the columns by checking the rows of the transposed puzzle. Load the library module containing the transpose/2 predicate with the directive
 :- ensure loaded(library(clpfd)).
-3. A very simple strategy for solving puzzles is to backtrack over all possible values for
-each puzzle square, and test that it is a valid puzzle solution. For a 2×2 puzzle, there
-are 94 = 6561 filled puzzles. This is very tractable, as long as the code to check that a
-puzzle is valid is reasonably efficient. This is a good way to get started.
+
+3. A very simple strategy for solving puzzles is to backtrack over all possible values for each puzzle square, and test that it is a valid puzzle solution. For a 2×2 puzzle, there are 94 = 6561 filled puzzles. This is very tractable, as long as the code to check that a puzzle is valid is reasonably efficient. This is a good way to get started.
+
 4. However, even for a 3×3 puzzle, there are 99 = 387, 420, 489 filled puzzles, and even
 for very efficient code to check if a solution is valid, the strategy of Hint 3 will not be
 tractable.
-But note that if the first row of the filled puzzle is not valid, the whole puzzle will be
-invalid, so there is no point exploring those possibilities. For example, if the heading
-2
-of the first row is 23, only 6 of the 93 = 729 possible ways to fill it could possibly be
-valid. More importantly, if you check that each row and column is valid as soon as it
+
+But note that if the first row of the filled puzzle is not valid, the whole puzzle will be invalid, so there is no point exploring those possibilities. For example, if the heading 2 of the first row is 23, only 6 of the 93 = 729 possible ways to fill it could possibly be valid. More importantly, if you check that each row and column is valid as soon as it
 is generated, rather than generating the whole grid before checking, you can cut the
 search space enormously. If all three rows of a 3×3 puzzle have only 6 solutions, then
 there are only 63 = 216 candidate puzzles to check (since once all the rows have been
